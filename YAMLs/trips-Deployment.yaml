@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trips
+spec:
+  selector:
+    matchLabels:
+      app: trips
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: trips
+    spec:
+      containers:
+        - name: trips
+          image: "acr1trips.azurecr.io/trips:1"
+          env:
+          - name: SQL_SERVER
+            valueFrom:
+              secretKeyRef:
+                name: sqlsecrets
+                key: sqlserver
+          - name: SQL_USER
+            valueFrom:
+              secretKeyRef:
+                name: sqlsecrets
+                key: sqluser
+          - name: SQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: sqlsecrets
+                key: sqlpw
+          ports:
+            - name: http
+              containerPort: 80
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "500m"
+            limits:
+              memory: "512Mi"
+              cpu: "1000m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: trips-service
+spec:
+  selector:
+    app: trips
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: http
+  type: LoadBalancer
