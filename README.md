@@ -8,7 +8,7 @@ This repo houses the source code and dockerfiles for the TripsApp Suite
 | File/folder       | Description                                |
 |-------------------|--------------------------------------------|
 | `.devcontainer`   | VS Code [development container](https://code.visualstudio.com/docs/remote/containers) with useful utils (Azure CLI, Kubectl, Helm, etc.)   |
-| `src`             | Sample source code for POI, Trips, User (Java), UserProfile (Node.JS), and TripViewer                     |
+| `src`             | Source code for the containers of POI, Trips, User (Java), UserProfile (Node.JS), and TripViewer                     |
 | `.gitignore`      | Define what to ignore at commit time.      |
 | `CODE_OF_CONDUCT.md` | Code of conduct.                        |
 | `LICENSE`         | The license for the sample.                |
