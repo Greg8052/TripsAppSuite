@@ -14,17 +14,17 @@ spec:
     spec:
       containers:
         - name: tripviewer
-          image: "acr1trips.azurecr.io/tripviewer:1"
+          image: "<yourACRname>.azurecr.io/tripviewer:1"
           ports:
             - name: http
               containerPort: 80
           resources:
             requests:
               memory: "128Mi"
-              cpu: "500m"
+              cpu: "250m"
             limits:
-              memory: "512Mi"
-              cpu: "1000m"
+              memory: "256Mi"
+              cpu: "500m"
 ---
 apiVersion: v1
 kind: Service
