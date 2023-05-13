@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: tripviewer
-          image: "<yourACRname>.azurecr.io/tripviewer:1"
+          image: "acrtripinsightfun.azurecr.io/tripviewer:1"
           ports:
             - name: http
               containerPort: 80

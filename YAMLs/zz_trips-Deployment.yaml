@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: poi
+  name: trips
 spec:
   selector:
     matchLabels:
-      app: poi
+      app: trips
   replicas: 2
   template:
     metadata:
       labels:
-        app: poi
+        app: trips
     spec:
       containers:
-        - name: poi
-          image: "acrtripinsightfun.azurecr.io/poi:1"
+        - name: trips
+          image: "acrtripinsightfun.azurecr.io/trips:1"
           env:
           - name: SQL_SERVER
             valueFrom:
@@ -45,10 +45,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: poi-service
+  name: trips-service
 spec:
   selector:
-    app: poi
+    app: trips
   ports:
   - protocol: TCP
     port: 8080
